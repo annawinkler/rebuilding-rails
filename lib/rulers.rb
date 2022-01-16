@@ -1,6 +1,7 @@
 require 'rulers/array'
 require 'rulers/routing'
 require 'rulers/version'
+require 'rulers/util'
 
 module Rulers
   class Error < StandardError; end
