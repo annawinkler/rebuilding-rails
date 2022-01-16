@@ -1,4 +1,5 @@
 require 'rulers/array'
+require 'rulers/controller'
 require 'rulers/dependencies'
 require 'rulers/routing'
 require 'rulers/version'
@@ -25,20 +26,10 @@ module Rulers
         text = controller.send(action)
         [200, {'Content-Type' => 'text/html'},
          [text]]
-      rescue StandardError
+      rescue StandardError => e
         [500, {'Content-Type' => 'text/html'},
-         ['Sorry about the error!']]
+         ["Sorry about the error!<br>#{e}"]]
       end
-    end
-  end
-
-  class Controller
-    def initialize(env)
-      @env = env
-    end
-
-    def env
-      @env
     end
   end
 end
