@@ -1,4 +1,5 @@
 require 'rulers/array'
+require 'rulers/dependencies'
 require 'rulers/routing'
 require 'rulers/version'
 require 'rulers/util'
