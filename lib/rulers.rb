@@ -1,6 +1,7 @@
 require 'rulers/array'
 require 'rulers/controller'
 require 'rulers/dependencies'
+require 'rulers/file_model'
 require 'rulers/routing'
 require 'rulers/version'
 require 'rulers/util'
