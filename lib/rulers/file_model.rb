@@ -23,6 +23,11 @@ module Rulers
         @hash[name.to_s] = value
       end
 
+      def self.all
+        files = Dir['db/quotes/*.json']
+        files.map { |file| FileModel.new(file) }
+      end
+
       def self.find(id)
         begin
           FileModel.new("db/quotes/#{id}.json")
