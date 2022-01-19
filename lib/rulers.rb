@@ -18,19 +18,19 @@ module Rulers
       if env['PATH_INFO'] == '/'
         return [200,
                 {'Content-Type' => 'text/html'},
-                [File.read("public/index.html")]]
+                [File.read('public/index.html')]]
       end
 
       klass, action = get_controller_and_action(env)
       controller = klass.new(env)
-      begin
+      #      begin
         text = controller.send(action)
         [200, {'Content-Type' => 'text/html'},
          [text]]
-      rescue StandardError => e
-        [500, {'Content-Type' => 'text/html'},
-         ["Sorry about the error!<br>#{e}"]]
-      end
+      #rescue StandardError => e
+      #  [500, {'Content-Type' => 'text/html'},
+      #   ["Sorry about the error!<br><pre>#{e.backtrace}</pre>"]]
+      #end
     end
   end
 end
