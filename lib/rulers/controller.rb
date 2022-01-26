@@ -12,6 +12,25 @@ module Rulers
       @env = env
     end
 
+    def get_response
+      @response
+    end
+
+    def request
+      @request ||= Rack::Request.new(@env)
+    end
+
+    def response(text, status=200, headers={})
+      raise 'Already responded!' if @response
+
+      answer = [text].flatten
+      @responses = Rack::Response.new(answer, status, headers)
+    end
+
+    def params
+      request.params
+    end
+
     def controller_name
       klass = self.class
       klass = klass.to_s.gsub(/Controller$/, '')
